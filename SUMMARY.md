@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Preface](README.md)
  - [1st Sprout - Before Starting the trial of CS](chapter1/README.md)
     - [Useful Tools Before Start](chapter1/usefulTools.md)
     - [Developing habits](chapter1/DevelopingHabits.md)
