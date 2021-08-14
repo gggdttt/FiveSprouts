@@ -4,8 +4,3 @@ Hence, in the first 'Sprout' I want to share with you is the tools which could o
 
 
 
-
-
-* 代码规范
-* 命名规范
-
