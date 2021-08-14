@@ -1,6 +1,6 @@
-* [中文](zh-hans)
+* [中文](zh-hans/)
 
-* [English](en)
+* [English](en/)
 
   
 
