@@ -96,7 +96,7 @@ Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以�
 
 * 点击 "New" 按钮
 
-  ![创建项目的主页入口](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816173214826.png)
+  ![创建项目的主页入口](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816181940599.png)
 
 * 创建项目仓库（Repositories)
 
