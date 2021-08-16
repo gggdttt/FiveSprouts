@@ -160,23 +160,50 @@ $ git push
 
 
 
-## 3. GitLab
+## 3. Tortoise
+
+<a name="tortoise"></a>
+
+### 3.1 What is Tortoise?
+
+`小乌龟`是我最喜欢的git UI（没有之一！）
+
+[官网链接](https://tortoisegit.org/)
+
+如果你觉得用`Git Bash`太麻烦，而`Git GUI`又非常不好用，那么我非常推荐你尝试一下`Tortoise`这款软件。
+
+### 3.2 Install Tortoise
+
+* 进入官网，选择下载（截至2021/8/17, `tortoise`的中文语言包也已经开发完毕，如果需要可以自行下载解压，但是不推荐）
+
+![Tortoise Website](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210817014618548.png)
+
+* 一路默认安装到头即可(安装路径不一定要在C盘，推荐将其安装在`development/development_tools`中方便管理)
+* 安装完毕，即可在右键中看到`小乌龟`集成的相关选项，其中git的所有功能都被用图形用户界面表示了出来，哪怕不记得命令也能很轻松得进行版本控制了。
+
+![Tortoise shown on right-click menu](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210817015139330.png)
+
+
+
+## 4. GitLab
 
 <a name="gitlab"></a>
 
 > ref: [linux中国](https://zhuanlan.zhihu.com/p/40371444)
 
-### 3.1 Why GitLab?
+### 4.1 What is GitLab and Why choose GitLab ?
 
-GitHub 能提供极佳的服务，但却有一些限制，其中之一就是其本身并不开源以及高级版需要收费。
+GitHub非常简单易用，不幸的是，尽管 GitHub 是全球最大的代码托管商，但是它自己的软件别人却无法使用。因为它不是开源的，所以你不能获取源代码并编译你自己的 GitHub。所以你无法下载 GitHub 并在您自己的服务器上编译并运行它，也意味着无法定制化开发自己需要的功能。
 
 万一你想要私有仓库或需要更多权限控制，最好的方法就是在你的服务器上运行 Git。不仅你能够省去一笔钱，你还能够在你的服务器有更多的操作。在大多数情况下，大多数高级 Linux 用户已经拥有自己的服务器并在其中部署了属于自己的Git服务。
 
-### 3.2 How to set up personal GitLab?
+GitLab 是一个非常优秀的开源项目，用户可以直接获取到源代码，使得用户可以在自己的服务器上运行类似于 GitHub 的项目管理系统。我们可以使用 GitLab 为团队成员或公司运行类似于 GitHub 的服务（<u>更加安全且可以根据自己的需求定制化开发</u>）。GitLab 的一些功能包括：Git 仓库管理，代码评论，问题跟踪，活动源和维基。它配备了 GitLab CI，用于持续集成和交付。
+
+### 4.2 How to set up personal GitLab?
 
 首先我们需要有一台服务器作为我们的git服务器，然后在这台git服务器上安装git服务。安装完成之后再在git的基础上配置GitLab。
 
-### 3.3 Install Git on Your Own Server（Linux）
+### 4.3 Install Git on Your Own Server（Linux）
 
 > 下面这部分可能对于新手来说会有些复杂，这里只是介绍一下步骤，可以在熟悉linux之后再回过来实现一遍。
 
@@ -311,99 +338,54 @@ git commit -m 'corrections in GoT.txt story' -a
 git push origin master
 ```
 
-### 3.4 配置使用 GitLab
+### 4.4 配置使用 GitLab
 
-GitHub非常简单易用，不幸的是，尽管 GitHub 是全球最大的代码托管商，但是它自己的软件别人却无法使用。因为它不是开源的，所以你不能获取源代码并编译你自己的 GitHub。这与 WordPress 或 Drupal 不同，您无法下载 GitHub 并在您自己的服务器上运行它。这是项目所有者和协作者的纯命令行解决方案。这当然不像使用 GitHub 那么简单。
+> 这一部分是接在3.3 完成的基础上进行的，如果觉得3.3没有完成可以先跳过
 
-像往常一样，在开源世界中，是没有终结的尽头。GitLab 是一个非常优秀的项目。这是一个开源项目，允许用户在自己的服务器上运行类似于 GitHub 的项目管理系统。
+* GitLab 为不同的操作系统提供了软件包。 在我们安装 GitLab 之前，您可能需要配置 SMTP 电子邮件服务器，以便 GitLab 可以在需要时随时推送电子邮件。官方推荐使用 Postfix。所以，先在服务器上安装 Postfix：
 
-您可以使用 GitLab 为团队成员或公司运行类似于 GitHub 的服务。您可以使用 GitLab 在公开发布之前开发私有项目。
-
-GitLab 采用传统的开源商业模式。他们有两种产品：免费的开源软件，用户可以在自己的服务器上安装，以及类似于 GitHub 的托管服务。
-
-可下载版本有两个版本，免费的社区版和付费企业版。企业版基于社区版，但附带针对企业客户的其他功能。社区版具有高度可扩展性，可以在单个服务器或群集上支持 25000 个用户。GitLab 的一些功能包括：Git 仓库管理，代码评论，问题跟踪，活动源和维基。它配备了 GitLab CI，用于持续集成和交付。
-
-Digital Ocean 等许多 VPS 提供商会为用户提供 GitLab 服务。 如果你想在你自己的服务器上运行它，你可以手动安装它。GitLab 为不同的操作系统提供了软件包。 在我们安装 GitLab 之前，您可能需要配置 SMTP 电子邮件服务器，以便 GitLab 可以在需要时随时推送电子邮件。官方推荐使用 Postfix。所以，先在你的服务器上安装 Postfix：
-
-```text
+```bash
 sudo apt-get install postfix
 ```
 
-在安装 Postfix 期间，它会问你一些问题，不要跳过它们。 如果你一不小心跳过，你可以使用这个命令来重新配置它：
+* 在安装 Postfix 期间， 如果你一不小心跳过了部分配置步骤，你可以使用这个命令来重新配置它：
 
-```text
+```bash
 sudo dpkg-reconfigure postfix
 ```
 
-运行此命令时，请选择 “Internet Site”并为使用 Gitlab 的域名提供电子邮件 ID。
+> 运行此命令时，请选择 “Internet Site”并为使用 Gitlab 的域名提供电子邮件 ID。
 
-我是这样输入的：
+* 在剩下的步骤中，都选择默认选项。
+* 我们使用 `wget` 来下载软件包(记得使用最新的GitLab的版本[GitLab官网](https://docs.gitlab.com/ee/install/)，不要直接复制)：
 
-```text
-xxx@x.com
-```
-
-用 Tab 键并为 postfix 创建一个用户名。接下来将会要求你输入一个目标邮箱。
-
-在剩下的步骤中，都选择默认选项。当我们安装且配置完成后，我们继续安装 GitLab。
-
-我们使用 `wget` 来下载软件包(用 [最新包](https://link.zhihu.com/?target=https%3A//about.gitlab.com/downloads/) 替换下载链接)：
-
-```text
+```bash
+# 记得将链接替换为最新的
 wget https://downloads-packages.s3.amazonaws.com/ubuntu-14.04/gitlab_7.9.4-omnibus.1-1_amd64.deb
 ```
 
-然后安装这个包：
+* 然后安装：
 
-```text
+```bash
 sudo dpkg -i gitlab_7.9.4-omnibus.1-1_amd64.deb
 ```
 
-现在是时候配置并启动 GitLab 了。
+* 配置并启动 GitLab 
 
-```text
+```bash
 sudo gitlab-ctl reconfigure
 ```
 
-您现在需要在配置文件中配置域名，以便您可以访问 GitLab。打开文件。
+* 现在需要在配置文件中配置域名，以便您可以访问 GitLab。打开文件。
 
-```text
+```bash
 nano /etc/gitlab/gitlab.rb
 ```
 
-在这个文件中编辑 `external_url` 并输入服务器域名。保存文件，然后从 Web 浏览器中打开新建的一个 GitLab 站点。
+* 在这个文件中编辑 `external_url` 并输入服务器域名。保存文件，然后从 Web 浏览器中打开新建的一个 GitLab 站点。
 
-
-
-![img](https://pic4.zhimg.com/80/v2-49ff2ac2f9b3cdd68c364f7de9d92a97_1440w.jpg)
-
-
-
-默认情况下，它会以系统管理员的身份创建 `root`，并使用 `5iveL!fe` 作为密码。 登录到 GitLab 站点，然后更改密码。
-
-
-
-![img](https://pic4.zhimg.com/80/v2-4b658c4fe9a568c03d330fe49efbc7c7_1440w.jpg)
-
-
-
-密码更改后，登录该网站并开始管理您的项目。
-
-
-
-![img](https://pic4.zhimg.com/80/v2-a9a37bba06cf7429b39b215e9cebe563_1440w.jpg)
-
-
-
-GitLab 有很多选项和功能。最后，我借用电影“黑客帝国”中的经典台词：“不幸的是，没有人知道 GitLab 可以做什么。你必须亲自尝试一下。”
-
-## 4. Tortoise
-
-<a name="tortoise"></a>
-
-
-
-
+* 默认情况下，它会以系统管理员的身份创建 `root`，并使用 `5iveL!fe` 作为密码。 登录到 GitLab 站点，然后更改密码。
+* 密码更改后，登录该网站并开始管理您的项目。
 
 
 
