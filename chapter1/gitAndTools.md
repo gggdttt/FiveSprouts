@@ -94,25 +94,31 @@ Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以�
 
 ### 2.2 How to host your code on GitHub?
 
-点击 "New" 按钮
+* 点击 "New" 按钮
 
 ![创建项目的主页入口](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816173214826.png)
 
-创建项目仓库（Repositories)
+* 创建项目仓库（Repositories)
 
+  这里有几点需要说明的是：
 
+  * `Repository name`是必填，`Description` 是选填并且会显示在你的`README.md`文件中
+  * 根据你自己的项目属性来选择`Public`还是`Private`属性
+  * `Add a README file`：一般都勾选，自动生成`README.md`文件，省的自己创建
+  * `Add .gitignore` ：根据需求，如果有不需要上传到git服务器的文件或者过于巨大的文件需要勾选，凡是文件名出现在这个文件内的文件，git会自动忽视它（即任何和它相关的记录都不会有）
+  * `Choose a license`：根据需求以及你的Repository的性质来决定是否需要license以及需要什么种类的license
 
 ![细节设置](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816180400641.png)
 
-这里需要说明的是，`Repository name`是必填，`Description` 是选填，并且会显示在你的`README.md`文件中
+* 在GitHub上完成创建
 
+![完成创建](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183300693.png)
 
+* 点击`code`,复制HTTPS下的Clone链接
 
-`Add a README file``Add .gitignore` 以及`Choose a license`
+![复制url](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183508954.png)
 
-啊
-
-
+* 
 
 ## 3. GitLab
 
