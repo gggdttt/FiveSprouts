@@ -58,12 +58,12 @@
 
    将其安装到`development_tools`下：
 
-   ```cmd
+   ```bash
    └─ {Your Path}
        └─ development
-           ├─ development_tools(这个文件夹专门用来安装各种安装工具)
-           ├─ development_codes(这个文件夹用来存放开发用的代码)
-           └─ development_env(这个文件夹专门存放各种开发用的开发环境)
+           ├─ development_tools #这个文件夹专门用来安装各种安装工具
+           ├─ development_codes #这个文件夹用来存放开发用的代码
+           └─ development_env #这个文件夹专门存放各种开发用的开发环境
    ```
 
    
@@ -126,7 +126,7 @@ Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以�
 
 * 输入comand，回车之后clone完成
 
-```shell
+```bash
 $ git clone { your link }
 ```
 
@@ -156,13 +156,15 @@ $ git commit -m '{your message}'
 $ git push
 ```
 
-> 这里只是最简单但也最常用的一种提交，更多更复杂的git操作请移步https://learngitbranching.js.org/ 学习。
+> 这里只是最简单但也最常用的一种提交，更多更复杂的git操作请移步墙裂推荐的网站https://learngitbranching.js.org/ 学习。
 
 
 
 ## 3. GitLab
 
 <a name="gitlab"></a>
+
+
 
 
 
@@ -180,7 +182,7 @@ $ git push
 
 #### 1 新建库
 
-``` shell
+``` bash
 # 在当前目录新建一个Git代码库
 $ git init
 
@@ -197,7 +199,7 @@ Git的配置也可以直接操作`.gitconfig`文件，也可以通过命令来�
 
 下面是通过命令配置：
 
-``` shell
+``` bash
 # 显示当前的Git配置
 $ git config --list
 
@@ -211,7 +213,7 @@ $ git config [--global] user.email "[email address]"
 
 #### 3 增加或删除相关文件
 
-``` shell
+``` bash
 # 添加指定文件到暂存区
 $ git add [file1] [file2] ...
 
@@ -237,7 +239,7 @@ $ git mv [file-original] [file-renamed]
 
 #### 4 提交代码
 
-``` shell
+``` bash
 # 提交暂存区到仓库区
 $ git commit -m [message]
 
@@ -260,7 +262,7 @@ $ git commit --amend [file1] [file2] ...
 
 #### 5 分支管理
 
-``` shell
+``` bash
 
 # 列出所有本地分支
 $ git branch
@@ -308,7 +310,7 @@ $ git branch -dr [remote/branch]
 
 #### 6 标签管理
 
-``` shell
+``` bash
 
 # 列出所有tag
 $ git tag
@@ -340,7 +342,7 @@ $ git checkout -b [branch] [tag]
 
 #### 7 查看信息
 
-``` shell
+``` bash
 
 # 显示有变更的文件
 $ git status
@@ -406,7 +408,7 @@ $ git reflog
 
 #### 8 远程同步
 
-``` shell
+``` bash
 # 下载远程仓库的所有变动
 $ git fetch [remote]
 
@@ -434,7 +436,7 @@ $ git push [remote] --all
 
 #### 9 撤销
 
-``` shell
+``` bash
 
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
@@ -468,5 +470,3 @@ $ git revert [commit]
 $ git stash
 $ git stash pop
 ```
-
-#### 
