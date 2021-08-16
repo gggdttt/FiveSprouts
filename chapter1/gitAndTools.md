@@ -1,6 +1,6 @@
 # Version control and tools
 
-## 版本控制
+## 基于Git的版本控制
 
 ### 定义
 
@@ -32,7 +32,7 @@
 
 以上两个场景是比较常见的`git` 的使用场景：场景1用git来进行团队间的合作，场景2用git来实现不同版本之间的切换（任何一次`commit`都会被记录形成一个节点，可以在对应的git的`log`中查看，如下图为**<u>5Sprouts</u>**的`log`）。
 
-> 在[计算机领域](https://zh.wikipedia.org/wiki/電腦運算)，日志文件（**logfile**）是一个记录了发生在运行中的[操作系统](https://zh.wikipedia.org/wiki/操作系统)或其他[软件](https://zh.wikipedia.org/wiki/软件)中的[事件](https://zh.wikipedia.org/w/index.php?title=Event_(computing)&action=edit&redlink=1)的文件，或者记录了在[网络聊天](https://zh.wikipedia.org/wiki/网络聊天)软件的用户之间发送的消息。**日志记录**（**Logging**）是指保存日志的行为。最简单的做法是将日志写入单个存放日志的文件。
+> 在[计算机领域](https://zh.wikipedia.org/wiki/電腦運算)，日志文件（**logfile**）是一个记录了发生在运行中的[操作系统](https://zh.wikipedia.org/wiki/操作系统)或其他[软件](https://zh.wikipedia.org/wiki/软件)中的事件的文件，或者记录了在[网络聊天](https://zh.wikipedia.org/wiki/网络聊天)软件的用户之间发送的消息。**日志记录**（**Logging**）是指保存日志的行为。最简单的做法是将日志写入单个存放日志的文件。
 
 ![某git项目的本地日志界面](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110341585.png)
 
@@ -40,4 +40,35 @@
 
 ![右击单条记录](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110414371.png)
 
-当我和别人一起合作时，
+当我和别人一起合作时，需要注意的是如果像场景一中那样两个人同时修改了一处代码，其中有一个人是无法直接提交的。当出现`conflict`的时候，一定要在<u>**询问过对方之后**</u>再决定是accept自己的代码还是对方的代码，而不能直接强行覆盖（很多新手不管三七二十一就直接把自己的部分push了上去或者未询问他人就直接覆盖了他的代码），这是 一定会让别人写的部分出问题的。
+
+### git 的安装和使用
+
+> 墙裂推荐git指令练习的网站：https://learngitbranching.js.org/
+
+1. 进入[官网]()找到相关链接下载并安装
+
+   * [windows](https://git-scm.com/download/win)
+   * [macOS](https://git-scm.com/download/mac)
+   * [Linux](https://git-scm.com/download/linux)
+
+2. 除了`linux`下的安装外，`windows`和`macOS`都是下载安装包之后直接按步骤安装即可。
+
+   >  这里推荐在你的计算机的根目录或者合适的地方创建一个`development`文件夹，然后在`development` 下创建一个`development_tools`用来安装所有相关工具，同时创建一个`development_env`来存放后续可能需要的各种包。这样子可以方便管理你的工具、环境以及后续的代码
+
+   将其安装到`development_tools`下：
+
+   ```cmd
+   └─ {Your Path}
+       └─ development
+           ├─ development_tools(这个文件夹专门用来安装各种安装工具)
+           ├─ development_codes(这个文件夹用来存放开发用的代码)
+           └─ development_env(这个文件夹专门存放各种开发用的开发环境)
+   ```
+
+   
+
+3. git的使用
+
+   在安装完git之后，比较推荐的一种使用方式是通过git远程托管代码到git服务器上，这样有利于协作。但是如果你只是单纯想
+
