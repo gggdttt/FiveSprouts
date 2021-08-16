@@ -1,6 +1,6 @@
 # Version control and tools
 
-## Version control based on Git
+## 1.Version control based on Git
 
 ### 1.1 Definition
 
@@ -36,11 +36,11 @@
 
 ![某git项目的本地日志界面](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110341585.png)
 
-不难发现，每行都是我的一次提交记录。右击单条记录，有若干选项可以操作（为了方便理解我直接贴了`tortoise`的用户界面，用纯命令行当然都是能实现的）。
+不难发现，每行都是我或者我的队友的一次提交记录。右击单条记录，有若干选项可以操作（为了方便理解我直接贴了[tortoise](#tortoise)的图形用户界面，实际上git还是推荐纯命令行操作，因为很酷）。
 
 ![右击单条记录](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110414371.png)
 
-当我和别人一起合作时，需要注意的是如果像场景一中那样两个人同时修改了一处代码，其中有一个人是无法直接提交的。当出现`conflict`的时候，一定要在<u>**询问过对方之后**</u>再决定是accept自己的代码还是对方的代码，而不能直接强行覆盖（很多新手不管三七二十一就直接把自己的部分push了上去或者未询问他人就直接覆盖了他的代码），这是会导致很严重的后果的。
+当我和别人一起合作时，需要注意的是如果像场景一中那样两个人同时修改了一处代码，其中有一个人是无法直接提交的。当出现`conflict`的时候，一定要在<u>**询问过对方之后**</u>再决定是accept自己的代码还是对方的代码，而不能直接强行覆盖（很多新手不管三七二十一就直接把自己的部分push了上去或者未询问他人就直接覆盖了他的代码），强行覆盖会导致很严重的后果。
 
 ### 1.3 Installation
 
@@ -80,23 +80,43 @@
 >
 > 把这个通关基本上关于git命令的理解就没啥大问题了。
 
-可以在[Appendix.Git Commond](#appendix1)中查看git的常用command（不推荐死记硬背，需要的时候查阅或者Google就行，这里只是让你知道git是有这些功能的）。
+可以在[Appendix1](#appendix1)中查看git的常用command（不推荐死记硬背，需要的时候查阅或者Google就行，这里只是让你知道git是有这些功能的）。
 
 
 
-## GitHub
+## 2. GitHub
 
+<a name="github"></a>
 
+### 2.1 What is GitHub?
 
-## GitLab
+Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以在上面找到来自全世界的小伙伴们开发的有趣的插件、工具等。自从被巨硬收购后貌似变得更好用了？
 
+### 2.2 How to host your code on GitHub?
 
+* 点击 "New" 按钮
+
+  ![创建项目的主页入口](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816173214826.png)
+
+* 创建项目仓库（Repositories)
+
+  ![细节设置](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816180400641.png)
+
+  * 这里需要说明的是，`Repository name`是必填，`Description` 是选填，并且会显示在你的`README.md`文件中
+  * 
+  * `Add a README file``Add .gitignore` 以及`Choose a license`
+
+* 啊
+
+## 3. GitLab
+
+<a name="gitlab"></a>
 
 
 
 ## 4. Tortoise
 
-
+<a name="tortoise"></a>
 
 
 
