@@ -34,11 +34,11 @@
 
 > 在[计算机领域](https://zh.wikipedia.org/wiki/電腦運算)，日志文件（**logfile**）是一个记录了发生在运行中的[操作系统](https://zh.wikipedia.org/wiki/操作系统)或其他[软件](https://zh.wikipedia.org/wiki/软件)中的事件的文件，或者记录了在[网络聊天](https://zh.wikipedia.org/wiki/网络聊天)软件的用户之间发送的消息。**日志记录**（**Logging**）是指保存日志的行为。最简单的做法是将日志写入单个存放日志的文件。
 
-![某git项目的本地日志界面](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110341585.png)
+![Local log of git](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110341585.png)
 
 不难发现，每行都是我或者我的队友的一次提交记录。右击单条记录，有若干选项可以操作（为了方便理解我直接贴了[tortoise](#tortoise)的图形用户界面，实际上git还是推荐纯命令行操作，因为很酷）。
 
-![右击单条记录](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110414371.png)
+![Right click on singal record](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210815110414371.png)
 
 当我和别人一起合作时，需要注意的是如果像场景一中那样两个人同时修改了一处代码，其中有一个人是无法直接提交的。当出现`conflict`的时候，一定要在<u>**询问过对方之后**</u>再决定是accept自己的代码还是对方的代码，而不能直接强行覆盖（很多新手不管三七二十一就直接把自己的部分push了上去或者未询问他人就直接覆盖了他的代码），强行覆盖会导致很严重的后果。
 
@@ -96,7 +96,7 @@ Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以�
 
 * 点击 "New" 按钮
 
-![创建项目的主页入口](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816173214826.png)
+![Click on "new" button](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816173214826.png)
 
 * 创建项目仓库（Repositories)
 
@@ -108,17 +108,57 @@ Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以�
   * `Add .gitignore` ：根据需求，如果有不需要上传到git服务器的文件或者过于巨大的文件需要勾选，凡是文件名出现在这个文件内的文件，git会自动忽视它（即任何和它相关的记录都不会有）
   * `Choose a license`：根据需求以及你的Repository的性质来决定是否需要license以及需要什么种类的license
 
-![细节设置](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816180400641.png)
+![Details setting](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816180400641.png)
 
 * 在GitHub上完成创建
 
-![完成创建](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183300693.png)
+![Create Successfully](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183300693.png)
 
 * 点击`code`,复制HTTPS下的Clone链接
 
-![复制url](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183508954.png)
+![copy url](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816183508954.png)
 
-* 
+* 选择合适的文件夹，右键选择`Git Bash Here`，会弹出一个命令行界面
+
+![Click on Git Bash](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816184515375.png)
+
+
+
+* 输入comand，回车之后clone完成
+
+```shell
+$ git clone { your link }
+```
+
+![clone](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816184820947.png)
+
+> 需要注意的是，如果你是第一次使用git，需要登录一下github的账号作为验证。
+
+* clone完成
+
+![clone successfully](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/image-20210816185604117.png)
+
+
+
+* Clone 完成之后，你就可以开始和你的队友一起合作写代码了。你们可以选择都在`master`分支下工作（如果2-4人确实这样比较方便）但是我比较推荐去尝试下一人一个分支（`branch`) 去工作，每个任务完成了再合并该部分到`master`分支上，这样比较符合真实开发环境。
+* 将代码push到github的步骤：
+
+```shell
+# 将修改提交到暂存区,这里的'.'代表将所有发生了修改的文件都添加进去
+# 如果不想全部添加也可以用{文件名}替代 '.'
+$ git add .
+
+# 将修改提交到本地分支
+# 这里的-m {message} 代表的是此次提交的说明，你也可以下载一个插件来自动生成非常详细的说明
+$ git commit -m '{your message}'
+
+# 将修改push到远程
+$ git push
+```
+
+> 这里只是最简单但也最常用的一种提交，更多更复杂的git操作请移步https://learngitbranching.js.org/ 学习。
+
+
 
 ## 3. GitLab
 
