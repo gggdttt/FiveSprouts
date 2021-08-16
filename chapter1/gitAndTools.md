@@ -70,7 +70,7 @@
 
 3. 在安装完git之后，比较推荐的一种使用方式是通过git远程托管代码到git服务器上，这样有利于协作。但是如果你只是单纯想进行版本控制也可以安装在本地（甚至不需要安装，目前很多IDE都自带了版本控制的功能，比如`IDEA`等一系列IDE。
 
-   通过git远程托管代码到git服务器上也有多种方式，我比较推荐的是<u>**将代码托管到Github**</u>，因为其比较简单易用,详见[github的使用](#2.Github)。但是如果对代码安全等有较高要求或者想自己部署一个git服务器，可以尝试自己部署一个GitLab服务，详见[gitlab的搭建和使用]()。
+   通过git远程托管代码到git服务器上也有多种方式，我比较推荐的是<u>**将代码托管到Github**</u>，因为其比较简单易用,详见[github的使用](#2.GitHub)。但是如果对代码安全等有较高要求或者想自己部署一个git服务器，可以尝试自己部署一个GitLab服务，详见[gitlab的搭建和使用](#GitLab)。
 
 ### 1.4 Git command
 
@@ -80,11 +80,23 @@
 >
 > 把这个通关基本上关于git命令的理解就没啥大问题了。
 
-可以在[Appendix.Git Commond](#github)中查看git的常用command（不推荐死记硬背，需要的时候查阅或者Google就行，这里只是让你知道git是有这些功能的）。
+可以在[Appendix.Git Commond](#Appendix. Git Commond)中查看git的常用command（不推荐死记硬背，需要的时候查阅或者Google就行，这里只是让你知道git是有这些功能的）。
 
 
 
-## Github
+## 2.GitHub
+
+
+
+## 3.GitLab
+
+
+
+
+
+## 4. Tortoise
+
+
 
 
 
