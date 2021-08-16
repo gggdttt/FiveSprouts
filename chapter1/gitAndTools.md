@@ -90,7 +90,7 @@
 
 ### 2.1 What is GitHub?
 
-Github是21世纪最大的~~同性交友~~开源代码托管平台，你可以在上面找到来自全世界的小伙伴们开发的有趣的插件、工具等。自从被巨硬收购后貌似变得更好用了？
+GitHub是21世纪最大的~~同性交友~~开源代码托管平台，你可以在上面找到来自全世界的小伙伴们开发的有趣的插件、工具等。自从被巨硬收购后貌似变得更好用了？
 
 ### 2.2 How to host your code on GitHub?
 
@@ -168,11 +168,17 @@ $ git push
 
 ### 3.1 Why GitLab?
 
-GitHub 能提供极佳的服务，但却有一些限制，尤其是你是单人或是一名 coding 爱好者。GitHub 其中之一的限制就是其中免费的服务没有提供代码私有托管业务，并且想要更多的私有仓库则要交更多的钱。
+GitHub 能提供极佳的服务，但却有一些限制，其中之一就是其本身并不开源以及高级版需要收费。
 
 万一你想要私有仓库或需要更多权限控制，最好的方法就是在你的服务器上运行 Git。不仅你能够省去一笔钱，你还能够在你的服务器有更多的操作。在大多数情况下，大多数高级 Linux 用户已经拥有自己的服务器并在其中部署了属于自己的Git服务。
 
-### 3.2 Install Git on Your Own Server
+### 3.2 How to set up personal GitLab?
+
+首先我们需要有一台服务器作为我们的git服务器，然后在这台git服务器上安装git服务。安装完成之后再在git的基础上配置GitLab。
+
+### 3.3 Install Git on Your Own Server（Linux）
+
+> 下面这部分可能对于新手来说会有些复杂，这里只是介绍一下步骤，可以在熟悉linux之后再回过来实现一遍。
 
 首先我们考虑一个简单案例，我们有一个远程服务器和一台本地服务器，现在我们需要使用这两台机器来工作。为了简单起见，我们就分别叫它们为远程服务器和本地服务器。
 
@@ -205,51 +211,51 @@ ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub | ssh git@remote-server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 ```
 
-> 如果从来没有用过linux操作系统，
+> 如果从来没有用过linux,对于上述命令可能会觉得非常陌生。但是问题不大，这里先复制，后面会有专门的章节介绍Linux。
 
 * 现在，用 `ssh` 登录进服务器并为 Git 创建一个项目路径。你可以为你的仓库设置一个你想要的目录。
 
-现在跳转到该目录中：
+* 现在跳转到该目录中：
 
-```text
+```bash
 cd /home/swapnil/project-1.git
 ```
 
-现在新建一个空仓库：
+* 现在新建一个空仓库,仓库名可以根据自己的需求来取
 
-```text
+```bash
 git init --bare
 Initialized empty Git repository in /home/swapnil/project-1.git
 ```
 
-现在我们需要在本地机器上新建一个基于 Git 版本控制仓库：
+* 现在我们需要在本地机器上新建一个基于 Git 版本控制仓库：
 
-```text
+```bash
 mkdir -p /home/swapnil/git/project
 ```
 
-进入我们创建仓库的目录：
+* 进入创建仓库的目录：
 
-```text
+```bash
 cd /home/swapnil/git/project
 ```
 
-现在在该目录中创建项目所需的文件。留在这个目录并启动 `git`：
+* 现在在该目录中创建项目所需的文件。留在这个目录并启动 `git`：
 
-```text
+```bash
 git init
 Initialized empty Git repository in /home/swapnil/git/project
 ```
 
-把所有文件添加到仓库中：
+* 把所有文件添加到仓库中：
 
-```text
+```bash
 git add .
 ```
 
-现在，每次添加文件或进行更改时，都必须运行上面的 `add` 命令。 您还需要为每个文件更改都写入提交消息。提交消息基本上说明了我们所做的更改。
+* 现在，每次添加文件或进行更改时，都必须运行上面的 `add` 命令。 您还需要为每个文件更改都写入提交消息。提交消息基本上说明了我们所做的更改。
 
-```text
+```bash
 git commit -m "message" -a
 [master (root-commit) 57331ee] message
  2 files changed, 2 insertions(+)
@@ -257,65 +263,57 @@ git commit -m "message" -a
  create mode 100644 writing.txt
 ```
 
-在这种情况下，我有一个名为 GoT（《权力的游戏》的点评）的文件，并且我做了一些更改，所以当我运行命令时，它指定对文件进行更改。 在上面的命令中 `-a` 选项意味着提交仓库中的所有文件。 如果您只更改了一个，则可以指定该文件的名称而不是使用 `-a`。
+> 在上面的命令中 `-a` 选项意味着提交仓库中的所有文件。 如果您只更改了一个，则可以指定该文件的名称而不是使用 `-a`。
+>
+> 举一个例子：
+>
+> ``` bash
+> git commit -m "message" GoT.txt
+> [master e517b10] message
+>  1 file changed, 1 insertion(+)
+> ```
 
-举一个例子：
+* 到现在为止，我们一直在本地服务器上工作。现在我们必须将这些更改推送到远程服务器上，以便通过互联网访问，并且可以与其他团队成员进行协作。
 
-```text
-git commit -m "message" GoT.txt
-[master e517b10] message
- 1 file changed, 1 insertion(+)
-```
-
-到现在为止，我们一直在本地服务器上工作。现在我们必须将这些更改推送到远程服务器上，以便通过互联网访问，并且可以与其他团队成员进行协作。
-
-```text
+```bash
 git remote add origin ssh://git@remote-server/repo-<wbr< a="">>path-on-server..git
 ```
 
-现在，您可以使用 `pull` 或 `push` 选项在服务器和本地计算机之间推送或拉取：
+* 现在，您可以使用 `pull` 或 `push` 选项在服务器和本地计算机之间推送或拉取：
 
-```text
+```bash
 git push origin master
 ```
 
-如果有其他团队成员想要使用该项目，则需要将远程服务器上的仓库克隆到其本地计算机上：
+* 如果有其他团队成员想要使用该项目，则需要将远程服务器上的仓库克隆到其本地计算机上：
 
-```text
+```bash
 git clone git@remote-server:/home/swapnil/project.git
 ```
 
-这里 `/home/swapnil/project.git` 是远程服务器上的项目路径，在你本机上则会改变。
+> 这里 `/home/swapnil/project.git` 是远程服务器上的项目路径，在你本机上则会改变。
 
-然后进入本地计算机上的目录（使用服务器上的项目名称）：
+* 然后进入本地计算机上的目录（使用服务器上的项目名称）：
 
-```text
+```bash
 cd /project
 ```
 
-现在他们可以编辑文件，写入提交更改信息，然后将它们推送到服务器：
+* 现在其他人可以编辑文件，写入提交更改信息，然后将它们推送到服务器：
 
-```text
+```bash
 git commit -m 'corrections in GoT.txt story' -a
 ```
 
-然后推送改变：
+* 然后推送改变：
 
-```text
+```bash
 git push origin master
 ```
 
-我认为这足以让一个新用户开始在他们自己的服务器上使用 Git。 如果您正在寻找一些 GUI 工具来管理本地计算机上的更改，则可以使用 GUI 工具，例如 QGit 或 GitK for Linux。
+### 3.4 配置使用 GitLab
 
-
-
-![img](https://pic3.zhimg.com/80/v2-2f780f6eb0e1becd4cb7e7ca4b110166_1440w.jpg)
-
-
-
-## **使用 GitLab**
-
-这是项目所有者和协作者的纯命令行解决方案。这当然不像使用 GitHub 那么简单。不幸的是，尽管 GitHub 是全球最大的代码托管商，但是它自己的软件别人却无法使用。因为它不是开源的，所以你不能获取源代码并编译你自己的 GitHub。这与 WordPress 或 Drupal 不同，您无法下载 GitHub 并在您自己的服务器上运行它。
+GitHub非常简单易用，不幸的是，尽管 GitHub 是全球最大的代码托管商，但是它自己的软件别人却无法使用。因为它不是开源的，所以你不能获取源代码并编译你自己的 GitHub。这与 WordPress 或 Drupal 不同，您无法下载 GitHub 并在您自己的服务器上运行它。这是项目所有者和协作者的纯命令行解决方案。这当然不像使用 GitHub 那么简单。
 
 像往常一样，在开源世界中，是没有终结的尽头。GitLab 是一个非常优秀的项目。这是一个开源项目，允许用户在自己的服务器上运行类似于 GitHub 的项目管理系统。
 
@@ -323,9 +321,7 @@ git push origin master
 
 GitLab 采用传统的开源商业模式。他们有两种产品：免费的开源软件，用户可以在自己的服务器上安装，以及类似于 GitHub 的托管服务。
 
-可下载版本有两个版本，免费的社区版和付费企业版。企业版基于社区版，但附带针对企业客户的其他功能。它或多或少与 [http://WordPress.org](https://link.zhihu.com/?target=http%3A//WordPress.org) 或 [http://Wordpress.com](https://link.zhihu.com/?target=http%3A//Wordpress.com) 提供的服务类似。
-
-社区版具有高度可扩展性，可以在单个服务器或群集上支持 25000 个用户。GitLab 的一些功能包括：Git 仓库管理，代码评论，问题跟踪，活动源和维基。它配备了 GitLab CI，用于持续集成和交付。
+可下载版本有两个版本，免费的社区版和付费企业版。企业版基于社区版，但附带针对企业客户的其他功能。社区版具有高度可扩展性，可以在单个服务器或群集上支持 25000 个用户。GitLab 的一些功能包括：Git 仓库管理，代码评论，问题跟踪，活动源和维基。它配备了 GitLab CI，用于持续集成和交付。
 
 Digital Ocean 等许多 VPS 提供商会为用户提供 GitLab 服务。 如果你想在你自己的服务器上运行它，你可以手动安装它。GitLab 为不同的操作系统提供了软件包。 在我们安装 GitLab 之前，您可能需要配置 SMTP 电子邮件服务器，以便 GitLab 可以在需要时随时推送电子邮件。官方推荐使用 Postfix。所以，先在你的服务器上安装 Postfix：
 
