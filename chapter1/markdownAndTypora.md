@@ -1,4 +1,4 @@
-# Markdown and Typora
+Markdown and Typora
 
 ## 1. Introduction to Markdown
 
@@ -338,4 +338,73 @@ cond(no)->op
 
 ## 3 Image Bed
 
-我
+### 3.1 Why is Image Bed necessary?
+
+在我第一次尝试编写markdown的时候，插入图片的方式是：
+
+* 从本地复制图片或者按住`win` +`shift`+`S`截图后粘贴。
+
+### 3.2 Install PicGo
+
+我们需要使用PicGo插件集成到Typora，即可实现本地文章编写，支持剪贴板直接粘贴图片，完成文章编写之后使用typora自带的一键上传服务，一次性上传所有图片。
+
+#### 3.2.1 Create Image Bed at GitHub
+
+* 创建一个新的repo，唯一关键的点是选择项目为  `Public` ，其他可以根据自己的需求选择。
+
+![Create New Image Bed at GitHub](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231637531.png)
+
+* 在GitHub中生成一个Token给PicGo
+
+  * 首先点击个人头像，选择`setting`
+
+  * 然后在左侧找到`development_setting`→进入后再选择`Personal access token`→进入界面后选择`generate new token` 
+
+    > 这里token的有效期选择多久更具自己的需求来即可。
+
+    ![Copy Token](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231637782.png)
+
+    复制这个token（注意这个token只可见一次，及时保存，如果一不小心手滑也没关系只要重新create一个新的token即可）
+
+
+#### 3.2.2 Download PicGo
+
+- 下载PicGO，可以进入GitHub的[PicGo官网下载](https://github.com/Molunerfinn/PicGo/releases)，Mac下载后缀名`.dmg`,Window下载后缀名`.exe`。
+
+![PicGo Website](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231637883.png)
+
+* 将其安装到任何你想要安装的地方
+
+#### 3.2.3 Set PicGO
+
+- 点击左边图床设计，选择GitHub图床，具体配置如下
+- 设定仓库名，填写：**GitHub名/库名**
+- 分支，**默认填master**
+- 设定Token，**刚才保存的token令牌**
+- 指定存储路径，**默认填img/**
+- 点击确定和设为默认图床
+
+![Set PicGo](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231638357.png)
+
+- 进入PicGo设置，打开时间戳重命名
+
+![Turn on Timestamp Rename](C:\Users\59710\AppData\Roaming\Typora\typora-user-images\image-20210823162307655.png)
+
+### 3.3 Set Typora
+
+- 打开Typora
+- `File` → `Preference`→`Image`
+- 进行图片中的设置
+
+![Set Figure](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231634195.png)
+
+- 所有的设置都已经完成就点击***验证图片上传选项***
+
+![Upload Check](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231636355.png)
+
+- 然后进入GitHub里看一下有图片就代表成功了
+
+* 如果觉得写一次传一次太麻烦，可以将`插入图片`应用规则 `上传图片`，即可实现插入图片然后自动上传其至GitHub，同时替换url，非常方便。
+
+![Advanced](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108231644553.png)
+
