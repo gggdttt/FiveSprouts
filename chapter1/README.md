@@ -1,7 +1,6 @@
 在第一章，我想着重介绍几个工具：
 
 * Git&related tools
-* GitHub
 * Typora(markdown editor)& related tools
 
 这可能是相对而言不会那么枯燥的一个章节，因为你可以跟着我的步骤一起来尝试。
@@ -10,3 +9,4 @@
 
 
 
+![蒜头王八](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108241645378.jpeg)
