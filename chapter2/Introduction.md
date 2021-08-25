@@ -55,39 +55,433 @@
 | 里氏替换原则 | 不要破坏继承体系，子类重写方法功能发生改变，不应该影响父类方法的含义 | 防止继承泛滥                               |
 | 合成复用原则 | 尽量使用组合或者聚合关系实现代码复用，少使用继承             | 降低代码耦合                               |
 
-**1、开闭原则（Open Close Principle）**
+### 1、开闭原则（Open Close Principle）
 
 开闭原则的意思是：**对扩展开放，对修改关闭**。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。简言之，是为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。
 
 > 可以理解为，一旦一个代码通过了review，那么它将一直存在且不会被修改，除非真的出现重大bug，后续功能的实现都通过对其进行扩展来实现，这要求对需求分类到不可再分，即每个功能模块之间没有交集。当然在真正开发中很难完全做到这一点，但是至少在设计阶段需要严格遵守这个原则。
 
-**2、里氏代换原则（Liskov Substitution Principle）**
+可以通过“抽象约束、封装变化”来实现开闭原则，即通过接口或者抽象类为软件实体定义一个相对稳定的抽象层，而将相同的可变因素封装在相同的具体实现类中。
+
+因为抽象灵活性好，适应性广，只要抽象的合理，可以基本保持软件架构的稳定。而软件中易变的细节可以从抽象派生来的实现类来进行扩展，当软件需要发生变化时，只需要根据需求重新派生一个实现类来扩展就可以了。
+
+下面以 Windows 的桌面主题为例介绍开闭原则的应用。
+
+#### 【**Windows 的桌面主题设计**】
+
+分析：Windows 的主题是桌面背景图片、窗口颜色和声音等元素的组合。用户可以根据自己的喜爱更换自己的桌面主题，也可以从网上下载新的主题。这些主题有共同的特点，可以为其定义一个抽象类（Abstract Subject），而每个具体的主题（Specific Subject）是其子类。用户窗体可以根据需要选择或者增加新的主题，而不需要修改原代码，所以它是满足开闭原则的，其类图如下图所示。
+
+
+
+![Windows的桌面主题类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251530266.gif)
+
+### 2、里氏代换原则（Liskov Substitution Principle）
 
 里氏代换原则是面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。*LSP* 是继承复用的基石，只有当派生类可以替换掉基类，且软件单位的功能不受到影响时，基类才能真正被复用，而派生类也能够在基类的基础上增加新的行为。<u>里氏代换原则是对开闭原则的补充。实现开闭原则的关键步骤就是抽象化</u>，而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。
 
 > 这里需要对[继承](https://zhuanlan.zhihu.com/p/37287325)有一个初步的理解。可以说开闭原则和里氏代换原则会一起被使用，因为开闭原则的扩展性需要通过里氏代换原则来实现。
 
-**3、依赖倒转原则（Dependence Inversion Principle）**
+#### 里氏代换原则实现方法
+
+里氏替换原则通俗来讲就是：子类可以扩展父类的功能，但不能改变父类原有的功能。也就是说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。
+
+根据上述理解，对里氏替换原则的定义可以总结如下：
+
+- 子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法
+- 子类中可以增加自己特有的方法
+- 当子类的方法重载父类的方法时，方法的前置条件（即方法的输入参数）要比父类的方法更宽松
+- 当子类的方法实现父类的方法时（重写/重载或实现抽象方法），方法的后置条件（即方法的的输出/返回值）要比父类的方法更严格或相等
+
+
+通过重写父类的方法来完成新的功能写起来虽然简单，但是整个继承体系的可复用性会比较差，特别是运用多态比较频繁时，程序运行出错的概率会非常大。
+
+如果程序违背了里氏替换原则，则继承类的对象在基类出现的地方会出现运行错误。这时其修正方法是：取消原来的继承关系，重新设计它们之间的关系。
+
+关于里氏替换原则的例子，最有名的是“正方形不是长方形”。当然，生活中也有很多类似的例子，例如，企鹅、鸵鸟和几维鸟从生物学的角度来划分，它们属于鸟类；但从类的继承关系来看，由于它们不能继承“鸟”会飞的功能，所以它们不能定义成“鸟”的子类。同样，由于“气球鱼”不会游泳，所以不能定义成“鱼”的子类；“玩具炮”炸不了敌人，所以不能定义成“炮”的子类等。
+
+下面以“几维鸟不是鸟”为例来说明里氏替换原则。
+
+#### 【例】里氏替换原则在“几维鸟不是鸟”实例中的应用
+
+分析：鸟一般都会飞行，如燕子的飞行速度大概是每小时 120 千米。但是新西兰的几维鸟由于翅膀退化无法飞行。假如要设计一个实例，计算这两种鸟飞行 300 千米要花费的时间。显然，拿燕子来测试这段代码，结果正确，能计算出所需要的时间；但拿几维鸟来测试，结果会发生“除零异常”或是“无穷大”，明显不符合预期，其类图如下图所示。
+
+
+
+![“几维鸟不是鸟”实例的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251606506.gif)
+
+
+程序代码如下：
+
+```java
+package principle;
+public class LSPtest {    
+    public static void main(String[] args) {        
+        Bird bird1 = new Swallow();        
+        Bird bird2 = new BrownKiwi();        
+        bird1.setSpeed(120);        
+        bird2.setSpeed(120);        
+        System.out.println("The distance is 300 kms：");
+        try {            
+            System.out.println("Swallow needs " + bird1.getFlyTime(300) + "hours.");          
+            System.out.println("BrownKiwi needs " + bird2.getFlyTime(300) + "hours.");        
+        } catch (Exception err) {            
+            System.out.println("An error occurrs!");        
+        }    
+    }}
+//鸟类
+class Bird {    
+    double flySpeed;    
+    public void setSpeed(double speed) {        
+        flySpeed = speed;    
+    }    
+    public double getFlyTime(double distance) {        
+        return (distance / flySpeed);    
+    }}
+//燕子类
+class Swallow extends Bird {}
+//几维鸟类
+class BrownKiwi extends Bird {    
+    public void setSpeed(double speed) {        
+        flySpeed = 0;    
+    }}
+```
+
+
+程序的运行结果如下：
+
+```
+The distance is 300 kms：
+Swallow needs 2.5 hours.
+BrownKiwi needs Infinity hours。
+```
+
+
+程序运行错误的原因是：几维鸟类重写了鸟类的 setSpeed(double speed) 方法，这违背了里氏替换原则。正确的做法是：取消几维鸟原来的继承关系，定义鸟和几维鸟的更一般的父类，如动物类，它们都有奔跑的能力。几维鸟的飞行速度虽然为 0，但奔跑速度不为 0，可以计算出其奔跑 300 千米所要花费的时间。其类图如下图所示。
+
+
+
+![“几维鸟是动物”实例的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251533234.gif)
+
+### **3、依赖倒转原则（Dependence Inversion Principle）**
 
 这个原则是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。
 
 > 需要对接口的概念有一个基本认识，在理解[接口](https://www.zhihu.com/question/20111251)的基础上就能理解DIP了。
 
-**4、接口隔离原则（Interface Segregation Principle）**
+#### 实现方法
+
+依赖倒置原则的目的是通过要面向接口的编程来降低类间的耦合性，所以我们在实际编程中只要遵循以下4点，就能在项目中满足这个规则。
+
+1. 每个类尽量提供接口或抽象类，或者两者都具备。
+2. 变量的声明类型尽量是接口或者是抽象类。
+3. 任何类都不应该从具体类派生。
+4. 使用继承时尽量遵循里氏替换原则。
+
+
+下面以“顾客购物程序”为例来说明依赖倒置原则的应用。
+
+**【例】依赖倒置原则在“顾客购物程序”中的应用。**
+
+分析：本程序反映了 “顾客类”与“商店类”的关系。商店类中有 sell() 方法，顾客类通过该方法购物以下代码定义了顾客类通过韶关网店 ShaoguanShop 购物：
+
+```java
+class Customer {    
+    public void shopping(Shop1 shop) {        
+        //购物        
+        System.out.println(shop.sell());    
+    }}
+```
+
+但是，这种设计存在缺点，如果该顾客想从另外一家商店购物，就要将该顾客的代码修改如下：
+
+```java
+class Customer {    
+    public void shopping(Shop2 shop) {        
+        //购物        
+        System.out.println(shop.sell());    
+    }}
+```
+
+顾客每更换一家商店，都要修改一次代码，这明显违背了开闭原则。存在以上缺点的原因是：顾客类设计时同具体的商店类绑定了，这违背了依赖倒置原则。解决方法是：定义“网店1”和“网店2”的共同接口 Shop，顾客类面向该接口编程，其代码修改如下：
+
+```java
+class Customer {    
+    public void shopping(Shop shop) {        
+        //购物        
+        System.out.println(shop.sell());    
+    }}
+```
+
+这样，不管顾客类 Customer 访问什么商店，或者增加新的商店，都不需要修改原有代码了，其类图如下图所示。
+
+
+
+![顾客购物程序的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251548397.gif)
+
+
+程序代码如下：
+
+```java
+package principle;
+public class DIPtest {    
+    public static void main(String[] args) {       
+        Customer wang = new Customer();        
+        System.out.println("顾客购买以下商品：");        
+        wang.shopping(new ShaoguanShop());        
+        wang.shopping(new WuyuanShop());    }}
+//商店
+interface Shop {    
+    public String sell(); 
+    //卖
+}
+//韶关网店
+class ShaoguanShop implements Shop {    
+    public String sell() {        
+        return "韶关土特产：香菇、木耳……";    
+    }}
+//婺源网店
+class WuyuanShop implements Shop {    
+    public String sell() {        
+        return "婺源土特产：绿茶、酒糟鱼……";    
+    }}//顾客
+class Customer {    
+    public void shopping(Shop shop) {        
+        //购物        
+        System.out.println(shop.sell());    
+    }}
+```
+
+程序的运行结果如下：
+
+```
+顾客购买以下商品：
+韶关土特产：香菇、木耳……
+婺源土特产：绿茶、酒糟鱼……
+```
+
+### **4、接口隔离原则（Interface Segregation Principle）**
 
 这个原则的意思是：使用多个隔离的接口，比使用单个接口要好。它还有另外一个意思是：降低类之间的耦合度。由此可见，其实设计模式就是从大型软件架构出发、便于升级和维护的软件设计思想，它强调降低依赖，降低耦合，即高内聚低耦合。
 
 > 可以和第五条迪米特法则结合起来理解。
 
-**5、迪米特法则，又称最少知道原则（Demeter Principle）**
+### 实现方法
+
+在具体应用接口隔离原则时，应该根据以下几个规则来衡量。
+
+- 接口尽量小，但是要有限度。一个接口只服务于一个子模块或业务逻辑。
+- 为依赖接口的类定制服务。只提供调用者需要的方法，屏蔽不需要的方法。
+- 了解环境，拒绝盲从。每个项目或产品都有选定的环境因素，环境不同，接口拆分的标准就不同深入了解业务逻辑。
+- 提高内聚，减少对外交互。使接口用最少的方法去完成最多的事情。
+
+
+下面以学生成绩管理程序为例介绍接口隔离原则的应用。
+
+**【例】学生成绩管理程序**
+
+分析：学生成绩管理程序一般包含插入成绩、删除成绩、修改成绩、计算总分、计算均分、打印成绩信息、査询成绩信息等功能，如果将这些功能全部放到一个接口中显然不太合理，正确的做法是将它们分别放在输入模块、统计模块和打印模块等 3 个模块中，其类图如下图 所示。
+
+![学生成绩管理程序的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251555685.gif)
+
+程序代码如下：
+
+```java 
+package principle;
+public class ISPtest {    
+    public static void main(String[] args) {        
+        InputModule input = StuScoreList.getInputModule();        
+        CountModule count = StuScoreList.getCountModule();        
+        PrintModule print = StuScoreList.getPrintModule();        
+        input.insert();        
+        count.countTotalScore();        
+        print.printStuInfo();         
+        //print.delete();    
+    }}
+//输入模块接口
+interface InputModule {    
+    void insert();    
+    void delete();    
+    void modify();
+}
+//统计模块接口
+interface CountModule {    
+    void countTotalScore();    
+    void countAverage();
+}
+//打印模块接口
+interface PrintModule {    
+    void printStuInfo();    
+    void queryStuInfo();}
+//实现类
+class StuScoreList implements InputModule, CountModule, PrintModule {    
+    private StuScoreList() {    }    
+    public static InputModule getInputModule() {        
+        return (InputModule) new StuScoreList();    
+    }    
+    public static CountModule getCountModule() {        
+        return (CountModule) new StuScoreList();    
+    }    
+    public static PrintModule getPrintModule() {        
+        return (PrintModule) new StuScoreList();    
+    }    
+    public void insert() {        
+        System.out.println("输入模块的insert()方法被调用！");    
+    }    
+    public void delete() {        
+        System.out.println("输入模块的delete()方法被调用！");    
+    }    
+    public void modify() {        
+        System.out.println("输入模块的modify()方法被调用！");    
+    }    
+    public void countTotalScore() {        
+        System.out.println("统计模块的countTotalScore()方法被调用！");    
+    }
+    public void countAverage() {        
+        System.out.println("统计模块的countAverage()方法被调用！");    
+    }    
+    public void printStuInfo() {        
+        System.out.println("打印模块的printStuInfo()方法被调用！");    
+    }    
+    public void queryStuInfo() {        
+        System.out.println("打印模块的queryStuInfo()方法被调用！");    
+    }}
+```
+
+程序的运行结果如下：
+
+```
+输入模块的insert()方法被调用！
+统计模块的countTotalScore()方法被调用！
+打印模块的printStuInfo()方法被调用！
+```
+
+### **5、迪米特法则/最少知道原则（Demeter Principle）**
 
 最少知道原则是指：一个实体应当尽量少地与其他实体之间发生相互作用，使得系统功能模块相对独立。
 
 > 现代软件工程大部分项目都是按照功能模块来划分，这样就算一个模块出现了重大bug也可以最快速定位以及尽可能减少对其他功能模块的影响。
 
-**6、合成复用原则（Composite Reuse Principle）**
+### 实现方法
+
+从迪米特法则的定义和特点可知，它强调以下两点：
+
+1. 从依赖者的角度来说，只依赖应该依赖的对象。
+2. 从被依赖者的角度说，只暴露应该暴露的方法。
+
+所以，在运用迪米特法则时要注意以下 6 点：
+
+1. 在类的划分上，应该创建弱耦合的类。类与类之间的耦合越弱，就越有利于实现可复用的目标
+2. 在类的结构设计上，尽量降低类成员的访问权限
+3. 在类的设计上，优先考虑将一个类设置成不变类
+4. 在对其他类的引用上，将引用其他对象的次数降到最低
+5. 不暴露类的属性成员，而应该提供相应的访问器（set 和 get 方法）
+6. 谨慎使用序列化（Serializable）功能
+
+
+**【例】明星与经纪人的关系实例**
+
+分析：明星由于全身心投入艺术，所以许多日常事务由经纪人负责处理，如与粉丝的见面会，与媒体公司的业务洽淡等。这里的经纪人是明星的朋友，而粉丝和媒体公司是陌生人，所以适合使用迪米特法则，其类图如下图 所示。
+
+
+
+![明星与经纪人的关系图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251601678.gif)
+
+程序代码如下：
+
+```java
+package principle;
+public class LoDtest {    
+    public static void main(String[] args) {        
+        Agent agent = new Agent();       
+        agent.setStar(new Star("林心如"));      
+        agent.setFans(new Fans("粉丝韩丞"));   
+        agent.setCompany(new Company("中国传媒有限公司"));    
+        agent.meeting();      
+        agent.business();  
+    }}
+//经纪人
+class Agent {    
+    private Star myStar;   
+    private Fans myFans; 
+    private Company myCompany;   
+    public void setStar(Star myStar) {      
+        this.myStar = myStar;  
+    }   
+    public void setFans(Fans myFans) {    
+        this.myFans = myFans;  
+    } 
+    public void setCompany(Company myCompany) {  
+        this.myCompany = myCompany;   
+    }   
+    public void meeting() {   
+        System.out.println(myFans.getName() + "与明星" + myStar.getName() + "见面了。"); 
+    }    
+    public void business() {    
+        System.out.println(myCompany.getName() + "与明星" + myStar.getName() + "洽淡业务。"); 
+    }}
+//明星
+class Star {   
+    private String name;   
+    Star(String name) {     
+        this.name = name;  
+    }   
+    public String getName() {       
+        return name;  
+    }}
+//粉丝
+class Fans { 
+    private String name;  
+    Fans(String name) {   
+        this.name = name; 
+    }    
+    public String getName() {  
+        return name;  
+    }}
+//媒体公司
+class Company { 
+    private String name;    
+    Company(String name) {     
+        this.name = name; 
+    }   
+    public String getName() {  
+        return name;
+    }}
+```
+
+
+程序的运行结果如下：
+
+```
+粉丝韩丞与明星林心如见面了。
+中国传媒有限公司与明星林心如洽淡业务。
+```
+
+### **6、合成复用原则（Composite Reuse Principle）**
 
 合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。即用类似搭建乐高的形式，来组合之前我们已经定义好的最小的类、功能模块组合以实现新的功能模块，而不是通过继承的方式（会极大提高耦合度且不方便复用）。
+
+### 实现方式
+
+## 合成复用原则的实现方法
+
+合成复用原则是通过将已有的对象纳入新对象中，作为新对象的成员对象来实现的，新对象可以调用已有对象的功能，从而达到复用。
+
+下面以汽车分类管理程序为例来介绍合成复用原则的应用。
+
+**【例】汽车分类管理程序**
+
+分析：汽车按“动力源”划分可分为汽油汽车、电动汽车等；按“颜色”划分可分为白色汽车、黑色汽车和红色汽车等。如果同时考虑这两种分类，其组合就很多。图 1 所示是用继承关系实现的汽车分类的类图。
+
+
+
+![用继承关系实现的汽车分类的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251606756.gif)
+
+从图中 可以看出用继承关系实现会产生很多子类，而且增加新的“动力源”或者增加新的“颜色”都要修改源代码，这违背了开闭原则，显然不可取。但如果改用组合关系实现就能很好地解决以上问题，其类图如图 2 所示。
+
+
+
+![用组合关系实现的汽车分类的类图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251605527.gif)
+
 
 ## Conclusion 
 
