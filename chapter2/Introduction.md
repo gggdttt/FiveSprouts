@@ -182,7 +182,7 @@ BrownKiwi needs Infinity hours。
 
 **【例】依赖倒置原则在“顾客购物程序”中的应用。**
 
-分析：本程序反映了 “顾客类”与“商店类”的关系。商店类中有 sell() 方法，顾客类通过该方法购物以下代码定义了顾客类通过韶关网店 ShaoguanShop 购物：
+分析：本程序反映了 “顾客类”与“商店类”的关系。商店类中有 sell() 方法，顾客类通过该方法购物以下代码定义了顾客类通过网店 1 Shop1 购物：
 
 ```java
 class Customer {    
@@ -235,12 +235,12 @@ interface Shop {
     //卖
 }
 //韶关网店
-class ShaoguanShop implements Shop {    
+class Shop1 implements Shop {    
     public String sell() {        
         return "韶关土特产：香菇、木耳……";    
     }}
 //婺源网店
-class WuyuanShop implements Shop {    
+class Shop2 implements Shop {    
     public String sell() {        
         return "婺源土特产：绿茶、酒糟鱼……";    
     }}//顾客
@@ -265,7 +265,7 @@ class Customer {
 
 > 可以和第五条迪米特法则结合起来理解。
 
-### 实现方法
+#### 实现方法
 
 在具体应用接口隔离原则时，应该根据以下几个规则来衡量。
 
@@ -361,7 +361,7 @@ class StuScoreList implements InputModule, CountModule, PrintModule {
 
 > 现代软件工程大部分项目都是按照功能模块来划分，这样就算一个模块出现了重大bug也可以最快速定位以及尽可能减少对其他功能模块的影响。
 
-### 实现方法
+#### 实现方法
 
 从迪米特法则的定义和特点可知，它强调以下两点：
 
@@ -460,9 +460,7 @@ class Company {
 
 合成复用原则是指：尽量使用合成/聚合的方式，而不是使用继承。即用类似搭建乐高的形式，来组合之前我们已经定义好的最小的类、功能模块组合以实现新的功能模块，而不是通过继承的方式（会极大提高耦合度且不方便复用）。
 
-### 实现方式
-
-## 合成复用原则的实现方法
+#### 合成复用原则的实现方法
 
 合成复用原则是通过将已有的对象纳入新对象中，作为新对象的成员对象来实现的，新对象可以调用已有对象的功能，从而达到复用。
 
