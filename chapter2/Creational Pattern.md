@@ -73,7 +73,7 @@
 
 其结构如下图所示：
 
-![单例模式的结构图](http://c.biancheng.net/uploads/allimg/181113/3-1Q1131K441K2.gif)
+![单例模式的结构图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108260229751.gif)
 
 
 ### 1.4.2. 单例模式的实现
@@ -186,7 +186,7 @@ class President {
 
 
 
-![有限的多例模式的结构图](http://c.biancheng.net/uploads/allimg/181113/3-1Q1131KQ4K8.gif)
+![有限的多例模式的结构图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108260229299.gif)
 图5 有限的多例模式的结构图
 
 # 2.原型模式
@@ -279,7 +279,6 @@ obj1==obj2?false
 
 
 ![孙悟空生成器的结构图](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108251751087.gif)
-图2 孙悟空生成器的结构图
 
 
 程序代码如下：
