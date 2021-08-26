@@ -2,7 +2,7 @@
 
 ##　Preface
 
-> This booklet is a birthday present for the 21st birthday of [@JiananAlvin](https://github.com/JiananAlvin), one of my best friends at DTU. 
+> This booklet is a birthday present for the 20st birthday of [@JiananAlvin](https://github.com/JiananAlvin), one of my best friends at DTU. 
 
 两个多月前我就在思考该送一个什么样的、具有纪念意义的礼物给你，但是不知道哪天就忽然想送你一本自己编写的书。送你一本什么样的书呢？我觉得植物学的书并不好,太矫情。既然你即将开始在CS的宇宙里遨游了，那我就把我五年来走过的弯路都告诉你，希望你不要再走上去，把我觉得好的习惯、好的方法以及好的工具都告诉你，希望可以帮助你更快得体会到计算机的乐趣，而不是在一些非必要走的坑中浪费太多时间。
 
