@@ -18,5 +18,5 @@
   * [Hexo&GitPage](chapter4/Hexo&GitPage.md)
   * [Get Your Own Server](chapter4/HaveYourOwnServer.md)
   * [TeXt theme](chapter4/TeXt.md)
-* [5th Sprout -  First Trial about AI](chapter5/README.md)
+* [5th Sprout -  YourSelf](chapter5/README.md)
 
