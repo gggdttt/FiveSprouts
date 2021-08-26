@@ -11,6 +11,9 @@
      - [Structural Pattern](chapter2/Structural Pattern.md)
      - [Conclusion](chapter2/Conclusion.md)
 * [3rd Linux](chapter3/README.md)
-* [4th Sprout - Embedded Development](chapter4/README.md)
-* [5th Sprout - Web Development ](chapter5/README.md)
+  * [Why learn Linux ](chapter3/README.md)
+  * [Install Linux on VM ](chapter3/README.md)
+  * [Basic Usage of Linux ](chapter3/README.md)
+* [4th Sprout - Web Development](chapter4/README.md)
+* [5th Sprout -  Trying AI](chapter5/README.md)
 
