@@ -14,7 +14,7 @@
   * [Why learn Linux ](chapter3/whylearnlinux.md)
   * [Install Linux on VM ](chapter3/installLinuxOnVm.md)
   * [Basic Usage of Linux ](chapter3/BasicUsageOfLinux.md)
-* [4th Sprout - Web Development](chapter4/README.md)
-  * []()
+* [4th Sprout - Set up your own blog](chapter4/README.md)
+  * [Hexo&GitPage](chapter4/Hexo&GitPage.md)
 * [5th Sprout -  First Trial about AI](chapter5/README.md)
 
