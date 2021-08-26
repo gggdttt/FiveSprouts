@@ -1,4 +1,4 @@
-> Reference: https://www.runoob.com/ ，http://c.biancheng.net/
+> 本章节主要的Reference源: https://www.runoob.com/ ，http://c.biancheng.net/
 >
 
 设计模式（Design pattern）是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的，设计模式可以看作是一种工程思维。
