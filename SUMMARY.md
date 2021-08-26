@@ -16,5 +16,7 @@
   * [Basic Usage of Linux ](chapter3/BasicUsageOfLinux.md)
 * [4th Sprout - Set up your own blog](chapter4/README.md)
   * [Hexo&GitPage](chapter4/Hexo&GitPage.md)
+  * [Get Your Own Server](chapter4/HaveYourOwnServer.md)
+  * [TeXt theme](chapter4/TeXt.md)
 * [5th Sprout -  First Trial about AI](chapter5/README.md)
 
