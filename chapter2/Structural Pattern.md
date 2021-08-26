@@ -1274,7 +1274,7 @@ class Chessboard extends MouseAdapter {
 ![五子棋游戏的运行结果](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108260146574.gif)
 图3 五子棋游戏的运行结果
 
-## 享元模式的应用场景
+## 6.4 享元模式的应用场景
 
 当系统中多处需要同一组信息时，可以把这些信息封装到一个对象中，然后对该对象进行缓存，这样，一个对象就可以提供给多出需要使用的地方，避免大量同一对象的多次创建，降低大量内存空间的消耗。
 
