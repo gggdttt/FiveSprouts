@@ -5,3 +5,6 @@
 * Hexo+Gitpage
 * TeXt + Gitpage/私有服务器
 
+其中我夹杂了一节指导如何购买、创建然后管理一个属于自己的云服务器，可以作为从来没有任何服务器开发经验的小伙伴的参考。
+
+![圣诞礼物](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108261647336.jpg)

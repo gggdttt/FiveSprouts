@@ -1,6 +1,6 @@
 # 如何用Hexo+Github Pages快速搭建自己的博客
 
-本文章快速搭建博客，有一个前提，那就是对git有所了解，如果你对git的使用即原理很熟悉的话，那么这个博客搭建就会很快，不超过一个小时。
+本文描述了如何搭建博客，但是有一个前提，那就是对git有所了解，如果你对git的使用即原理很熟悉的话，那么这个博客搭建就会很快。
 
 ## 1.介绍工具
 
@@ -23,7 +23,7 @@
 
 ### 2.3 安装Hexo
 
-由于Hexo这玩意是托管在国外的，在国内下载可能会限速，所以可以使用国内的淘宝的镜像。在cmd中输入以下：
+由于Hexo是托管在国外的，在国内下载可能会限速，所以可以使用国内的淘宝的镜像。在cmd中输入以下：
 
 ```bash
  npm config set registry https://registry.npm.taobao.org
@@ -62,16 +62,16 @@ npm install hexo-deployer-git --save
 hexo s
 ```
 
-![Demo](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108261506180.png)
+![result](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108261506180.png)
 
 直接网页搜索localhost:4000，博客雏形就出来了。
-![初始化](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108261506882.png)
+![localhost:4000](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/img/202108261506882.png)
 
 
 
-### 3.2 github新建repo
+### 3.2 GitHub新建repo
 
-同第一章tools中关于github新建库的描述，但是仓库名必须是{用户名.github.io}
+同第一章tools中关于GitHub新建库的描述，但是仓库名必须是{用户名.github.io}
 
 
 
@@ -164,8 +164,7 @@ https://gggdttt.github.io/ ，这是github给我们的公开地址。
 ### 3.5 美化博客
 
 如果想使自己的博客好看点可以换主题：
-[Hexo官网主题](https://link.segmentfault.com/?url=https%3A%2F%2Fhexo.io%2Fthemes%2F)
-建议换个，使用者多点的主题，这种的说明文档写的比较好，方便新人上手。
+[Hexo官网主题](https://hexo.io/themes/) 建议换个使用者多点的主题，这种的说明文档写的比较好，方便新人上手。
 美化博客你只需要点进官网开源的主题，然后找到这个主题的github链接，都会有详细教程。
 
 ## 4.实现原理
@@ -179,8 +178,11 @@ npm install hexo-cli -g
 ```
 
 安装好之后，我们通过**hexo+命令**这样的方式来操作Hexo的一些插件，就比如：hexo server、hexo generate，他实际上执行hexo会通过node调用hexo-cli中的`entry`函数(比如，可以把’hexo init’视为’node hexo-cli/entry.js init’)。
-当执行hexo server时，Hexo的Markdown文档会进行两次渲染，变成我们的博客。
-1.第一次是遍历我们的根目录下的source文件，就是我们博客的页面，他会输出一些article对象，就是我们每个页面等。
-2.第二次渲染会遍历我们themes下的文件，这个文件下的内容，是我们美化要修改的地方，hexo generate他会输出生成根目录下的public文件夹。
-这个public是我们要托管到github上的博客，当我们hexo deploy完成，就会把我们的博客push，部署到github上，每个github账号都会有一个站点，并且有无限的项目站点。而github pages 就是来托管我们的页面的，通过这个github pages给我们的域名来访问我们的博客，我们每次修改博客时，也只是提交的public文件，hexo generate产生、hexo deploy部署的页面。
+当执行hexo server时，Hexo的Markdown文档会进行两次渲染，变成我们的博客:
+
+1. 第一次是遍历我们的根目录下的source文件，就是我们博客的页面，他会输出一些article对象，就是我们每个页面等
+
+2. 第二次渲染会遍历我们themes下的文件，这个文件下的内容，是我们美化要修改的地方，hexo generate他会输出生成根目录下的public文件夹。
+
+   这个public是我们要托管到github上的博客，当我们hexo deploy完成，就会把我们的博客push，部署到github上，每个github账号都会有一个站点，并且有无限的项目站点。而github pages 就是来托管我们的页面的，通过这个github pages给我们的域名来访问我们的博客，我们每次修改博客时，也只是提交的public文件，hexo generate产生、hexo deploy部署的页面。
 
