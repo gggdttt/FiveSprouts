@@ -1,5 +1,7 @@
 ![cover](https://raw.githubusercontent.com/gggdttt/ImageBeds/master/cover.jpg)
 
+>  For better reading experience, you could visit the address at gitBook: https://www.wenjieandjianan.life/
+
 ##　Preface
 
 > This booklet is a birthday present for the 20th birthday of [@JiananAlvin](https://github.com/JiananAlvin)at DTU. 
